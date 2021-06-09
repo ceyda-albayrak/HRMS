@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<EasyWSDL>
+  <Info>
+    <Version>5.11.5.0</Version>
+    <AccountType>Basic</AccountType>
+    <LibrariesFolder>easywsdl</LibrariesFolder>
+    <MainClass>DAKKPSPublicSoap</MainClass>
+  </Info>
+  <Settings>
+    <Url>https://tckimlik.nvi.gov.tr/service/kpspublic.asmx</Url>
+    <ClassPrefix/>
+    <PackageName>com.example.hrms.mernisService</PackageName>
+    <AddDocumentation>false</AddDocumentation>
+    <EnableAdvancedFeatures>true</EnableAdvancedFeatures>
+    <EnableMTOM>false</EnableMTOM>
+    <EncodeIllegalCharacters>true</EncodeIllegalCharacters>
+    <GenerateAsyncOperations>false</GenerateAsyncOperations>
+    <ImplementSerializable>false</ImplementSerializable>
+    <ImplementParcelable>false</ImplementParcelable>
+    <AddAnyCollection>false</AddAnyCollection>
+    <DateTimeSupport>Default</DateTimeSupport>
+    <Repackage/>
+    <GenerateHtmlDocumentation>false</GenerateHtmlDocumentation>
+    <AddDataSetSupport>false</AddDataSetSupport>
+    <PlatformType>Java</PlatformType>
+    <Annotations>None</Annotations>
+    <AddLibraries>true</AddLibraries>
+    <GenerateGetSetMethods>false</GenerateGetSetMethods>
+    <DetectDictionaries>false</DetectDictionaries>
+  </Settings>
+  <Files>
+    <File>DAKDateTimeConverter.java</File>
+    <File>DAKExtendedSoapSerializationEnvelope.java</File>
+    <File>DAKHelper.java</File>
+    <File>DAKKPSPublicSoap.java</File>
+    <File>DAKKPSPublicSoap12.java</File>
+    <File>DAKMarshalGuid.java</File>
+    <File>DAKStandardDateTimeConverter.java</File>
+  </Files>
+  <Libraries>
+    <File>ExKsoap2-1.0.3.1.jar</File>
+    <File>ksoap2-android-assembly-3.6.4-jar-with-dependencies.jar</File>
+  </Libraries>
+</EasyWSDL>
