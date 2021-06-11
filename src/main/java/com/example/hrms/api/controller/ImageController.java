@@ -6,6 +6,7 @@ import com.example.hrms.core.utilities.results.DataResult;
 import com.example.hrms.core.utilities.results.Result;
 import com.example.hrms.core.utilities.results.SuccessDataResult;
 import com.example.hrms.entities.concretes.CvImage;
+import com.example.hrms.entities.concretes.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,14 +24,13 @@ public class ImageController {
         this.imageService = imageService;
     }
 
-    @GetMapping("/getall")
-    public DataResult<List<CvImage>> getAll(){
-        return this.imageService.getAll();
-    }
 
-    @PostMapping("/add")
-    public Result add(@RequestParam(value="imageId") int imageId, @RequestParam(value="url")MultipartFile url){
-        return this.imageService.add(imageId,url);
+
+    @PostMapping(value = "/add")
+    public Result add(@RequestParam(value = "id") int id, @RequestParam(value = "imageFile") MultipartFile imageFile){
+        CvImage cvImage = new CvImage();
+        cvImage.setCvId(id);
+        return this.imageService.add(cvImage, imageFile);
     }
 
 

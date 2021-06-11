@@ -8,6 +8,7 @@ import com.example.hrms.core.utilities.results.*;
 import com.example.hrms.core.utilities.rules.RunRules;
 import com.example.hrms.dataAccess.abstracts.EmployeeDao;
 import com.example.hrms.entities.concretes.Employee;
+import com.example.hrms.entities.dtos.CvDetailDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,7 @@ public class EmployeeManager implements EmployeeService {
 
     private EmployeeDao employeeDao;
     private MernisCheckService mernisCheckService;
+
 
 
     @Autowired
@@ -42,6 +44,27 @@ public class EmployeeManager implements EmployeeService {
             return new SuccessResult("Başarılı Kayıt!");
         }
         return new ErrorResult("Başarısız");
+    }
+
+    @Override
+    public Employee getById(int id) {
+        return this.employeeDao.getById(id);
+    }
+
+    @Override
+    public CvDetailDto getCvById(int id) {
+        CvDetailDto cv=new CvDetailDto();
+        Employee employee=this.employeeDao.getById(id);
+        cv.getEmployee();
+        cv.setExperiences(employee.getExperiences());
+        cv.setImages(employee.getImages());
+        cv.setLanguages(employee.getLanguages());
+        cv.setTechnologies(employee.getTechnologies());
+        cv.setEducations(employee.getEducations());
+        cv.setLinks(employee.getLinks());
+        cv.setLanguages(employee.getLanguages());
+        cv.setLetters(employee.getLetters());
+        return cv;
     }
 
     private Result mernisControl(Employee employee){

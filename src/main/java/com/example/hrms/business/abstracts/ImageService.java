@@ -9,6 +9,5 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 public interface ImageService {
-    DataResult<List<CvImage>> getAll();
-    Result add(int imageId, MultipartFile url);
+    Result add(CvImage cvImage,  MultipartFile imageFile);
 }

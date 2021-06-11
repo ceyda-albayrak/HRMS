@@ -9,4 +9,5 @@ import java.util.List;
 public interface EmployeeDao extends JpaRepository<Employee,Integer> {
     List<Employee> findAllByEmailAndTcNo(String email,String tcno);
     List<Employee> findAllByEmail(String email);
+    Employee getById(int id);
 }

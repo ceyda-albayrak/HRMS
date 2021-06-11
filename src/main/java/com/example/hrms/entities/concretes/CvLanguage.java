@@ -14,7 +14,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","cv"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","employee"})
 public class CvLanguage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +29,10 @@ public class CvLanguage {
 
     @Column(name="cv_id")
     private int cvId;
+
+    @ManyToOne
+    @JoinColumn(name="cv_id",updatable = false,insertable = false)
+    Employee employee;
 
 
 }

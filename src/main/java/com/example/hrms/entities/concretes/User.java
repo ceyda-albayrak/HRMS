@@ -1,6 +1,7 @@
 package com.example.hrms.entities.concretes;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -15,6 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name="users")
 @Inheritance(strategy = InheritanceType.JOINED)
+
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,9 +33,7 @@ public class User {
     private int userTypeId;
 
 
-    @OneToOne(mappedBy = "user" ,optional = false,fetch = FetchType.LAZY)
-    @JsonIgnore
-    private CvImage images;
+
 
 
 }

@@ -1,5 +1,6 @@
 package com.example.hrms.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,5 +30,33 @@ public class Employee extends User{
     @Column(name="birth_date")
     private Date birthDate;
 
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "employee")
+    private List<CvCoverLetter> letters;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "employee")
+    private List<CvImage> images;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "employee")
+    private List<CvEducation> educations;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "employee")
+    private List<CvExperience> experiences;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "employee")
+    private List<CvLanguage> languages;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "employee")
+    private List<CvLink> links;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "employee")
+    private List<CvTechnology> technologies;
 
 }
