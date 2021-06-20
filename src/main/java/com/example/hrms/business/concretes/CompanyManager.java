@@ -9,8 +9,13 @@ import com.example.hrms.dataAccess.abstracts.EmployeeDao;
 import com.example.hrms.dataAccess.abstracts.CompanyDao;
 import com.example.hrms.entities.concretes.Company;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Service
@@ -47,6 +52,8 @@ public class CompanyManager implements CompanyService {
         }
         return new SuccessResult("başarılı");
     }
+
+
 
 
 }

@@ -10,10 +10,17 @@ import com.example.hrms.dataAccess.abstracts.EmployeeDao;
 import com.example.hrms.entities.concretes.Employee;
 import com.example.hrms.entities.dtos.CvDetailDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class EmployeeManager implements EmployeeService {
@@ -43,7 +50,7 @@ public class EmployeeManager implements EmployeeService {
             employeeDao.save(employee);
             return new SuccessResult("Başarılı Kayıt!");
         }
-        return new ErrorResult("Başarısız");
+        return new ErrorResult(result.getMessage());
     }
 
     @Override
@@ -55,17 +62,18 @@ public class EmployeeManager implements EmployeeService {
     public CvDetailDto getCvById(int id) {
         CvDetailDto cv=new CvDetailDto();
         Employee employee=this.employeeDao.getById(id);
-        cv.getEmployee();
+        cv.setEmployee(employee);
         cv.setExperiences(employee.getExperiences());
         cv.setImages(employee.getImages());
         cv.setLanguages(employee.getLanguages());
         cv.setTechnologies(employee.getTechnologies());
         cv.setEducations(employee.getEducations());
         cv.setLinks(employee.getLinks());
-        cv.setLanguages(employee.getLanguages());
         cv.setLetters(employee.getLetters());
         return cv;
     }
+
+
 
     private Result mernisControl(Employee employee){
         if(mernisCheckService.mernisCheck(employee)){
@@ -80,4 +88,18 @@ public class EmployeeManager implements EmployeeService {
         }
         return new SuccessResult("Başarılı");
     }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorDataResult<Object> handleValidationException(MethodArgumentNotValidException exceptions){
+        Map<String,String> validationErrors = new HashMap<String,String>();
+        for(FieldError fieldError:exceptions.getBindingResult().getFieldErrors()){
+            validationErrors.put(fieldError.getField(),fieldError.getDefaultMessage());
+        }
+        ErrorDataResult<Object> errors= new ErrorDataResult<Object>(validationErrors,"Doğrulama hataları");
+        return errors;
+
+    }
+
+
 }

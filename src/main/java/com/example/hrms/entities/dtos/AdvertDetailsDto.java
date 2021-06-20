@@ -18,4 +18,7 @@ public class AdvertDetailsDto {
     private LocalDate releaseDate;
     private Date deadline;
     private boolean statu;
+    private int minSalary;
+    private int maxSalary;
+    private String description;
 }

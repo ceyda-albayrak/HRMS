@@ -13,4 +13,6 @@ public interface EmployeeService {
     Result add(Employee employee);
     Employee getById(int id);
     CvDetailDto getCvById(int id);
+
+
 }

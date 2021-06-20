@@ -1,6 +1,7 @@
 package com.example.hrms.entities.concretes;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @PrimaryKeyJoinColumn(name="id")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","employee"})
 public class Employee extends User{
 
     @Column(name="first_name")

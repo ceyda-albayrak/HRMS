@@ -1,5 +1,6 @@
 package com.example.hrms.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,6 +19,7 @@ public class CvTechnology {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
+    @JsonIgnore
     private int techId;
 
     @Column(name="tech_name")
@@ -26,6 +28,7 @@ public class CvTechnology {
     @Column(name="cv_id")
     private int cvId;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="cv_id",updatable = false,insertable = false)
     Employee employee;

@@ -1,5 +1,6 @@
 package com.example.hrms.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
@@ -22,6 +23,7 @@ public class CvCoverLetter {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
+    @JsonIgnore
     private int coverId;
 
     @Column(name = "cv_id")
@@ -30,6 +32,7 @@ public class CvCoverLetter {
     @Column(name="cover_letter")
     private String coverLetter;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="cv_id",updatable = false,insertable = false)
     private Employee employee;

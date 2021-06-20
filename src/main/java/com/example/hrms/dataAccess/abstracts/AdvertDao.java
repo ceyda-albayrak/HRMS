@@ -16,17 +16,17 @@ public interface AdvertDao extends JpaRepository<Advert,Integer> {
 
 
     @Query("Select new com.example.hrms.entities.dtos.AdvertDetailsDto" +
-            "(a.advertId, c.companyName, p.position, a.posPiece, a.releaseDate, a.deadline, a.statu)"+
+            "(a.advertId, c.companyName, p.position, a.posPiece, a.releaseDate, a.deadline, a.statu, a.minSalary, a.maxSalary, a.description)"+
             "From Advert a inner join a.company c inner join a.position p")
     List<AdvertDetailsDto> getAdvertDetails(boolean statu);
 
     @Query("Select new com.example.hrms.entities.dtos.AdvertDetailsDto" +
-            "(a.advertId, c.companyName, p.position, a.posPiece, a.releaseDate, a.deadline, a.statu)"+
+            "(a.advertId, c.companyName, p.position, a.posPiece, a.releaseDate, a.deadline, a.statu,a.minSalary,a.maxSalary, a.description)"+
             "From Advert a inner join a.company c inner join a.position p where a.companyId=:companyId")
     List<AdvertDetailsDto> getAdvertDetailsCompany(int companyId);
 
     @Query("Select new com.example.hrms.entities.dtos.AdvertDetailsDto" +
-            "(a.advertId, c.companyName, p.position, a.posPiece, a.releaseDate, a.deadline, a.statu)"+
+            "(a.advertId, c.companyName, p.position, a.posPiece, a.releaseDate, a.deadline, a.statu,a.minSalary,a.maxSalary, a.description)"+
             "From Advert a inner join a.company c inner join a.position p where a.statu=true order by a.releaseDate desc")
     List<AdvertDetailsDto> getAdvertsDate();
 

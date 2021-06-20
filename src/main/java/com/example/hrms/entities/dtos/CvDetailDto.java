@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 public class CvDetailDto {
 
-    private List<Employee> employee;
+    private Employee employee;
     private List<CvExperience> experiences;
     private List<CvLanguage> languages;
     private List<CvCoverLetter> letters;
